@@ -1,11 +1,10 @@
-ARG CADDY_VER=2.6.1
+ARG CADDY_VER=2.6.4
 
 FROM caddy:${CADDY_VER}-builder-alpine AS builder
 
 RUN xcaddy build \
     --with github.com/caddy-dns/cloudflare \
-    --with github.com/greenpau/caddy-auth-portal \
-    --with github.com/greenpau/caddy-authorize \
+    --with github.com/greenpau/caddy-security \
     --with github.com/mholt/caddy-l4 \
     --with github.com/mastercactapus/caddy2-proxyprotocol
 
