@@ -5,8 +5,7 @@ FROM caddy:${CADDY_VER}-builder-alpine AS builder
 RUN xcaddy build \
     --with github.com/caddy-dns/cloudflare \
     --with github.com/greenpau/caddy-security \
-    --with github.com/mholt/caddy-l4 \
-    --with github.com/mastercactapus/caddy2-proxyprotocol
+    --with github.com/mholt/caddy-l4
 
 ARG CADDY_VER
 
