@@ -1,4 +1,4 @@
-ARG CADDY_VER=2.7.4
+ARG CADDY_VER=2.7.5
 
 FROM caddy:${CADDY_VER}-builder-alpine AS builder
 
