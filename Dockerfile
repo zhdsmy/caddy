@@ -2,7 +2,7 @@ FROM golang AS builder
 WORKDIR /usr/bin
 RUN go install github.com/caddyserver/xcaddy/cmd/xcaddy@latest
 
-ARG CADDY_TAG=fix-7292
+ARG CADDY_TAG=v2.11.1
 RUN xcaddy build ${CADDY_TAG} \
     --with github.com/caddy-dns/cloudflare \
     --with github.com/greenpau/caddy-security \
