@@ -1,9 +1,13 @@
-FROM golang AS builder
-WORKDIR /usr/bin
-RUN go install github.com/caddyserver/xcaddy/cmd/xcaddy@latest
+# syntax=docker/dockerfile:1
 
-ARG CADDY_TAG=v2.11.2
-RUN xcaddy build ${CADDY_TAG} \
+ARG CADDY_VERSION=2.11.3
+
+FROM caddy:${CADDY_VERSION}-builder-alpine AS builder
+
+ARG CADDY_VERSION=2.11.3
+
+RUN xcaddy build v${CADDY_VERSION} \
+    --output /usr/bin/caddy \
     --with github.com/caddy-dns/cloudflare \
     --with github.com/greenpau/caddy-security \
     --with github.com/mholt/caddy-l4 \
@@ -11,5 +15,14 @@ RUN xcaddy build ${CADDY_TAG} \
     --with github.com/fvbommel/caddy-combine-ip-ranges \
     --with github.com/WeidiDeng/caddy-cloudflare-ip
 
-FROM caddy:latest AS dist
+FROM caddy:${CADDY_VERSION}-alpine
+
+ARG CADDY_VERSION=2.11.3
+
+LABEL org.opencontainers.image.title="caddy" \
+      org.opencontainers.image.description="Custom Caddy image with Cloudflare DNS, security, L4, cache, and IP utility plugins" \
+      org.opencontainers.image.version="${CADDY_VERSION}" \
+      org.opencontainers.image.source="https://github.com/zhdsmy/caddy" \
+      org.opencontainers.image.licenses="Apache-2.0"
+
 COPY --from=builder /usr/bin/caddy /usr/bin/caddy
