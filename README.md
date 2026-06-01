@@ -19,6 +19,11 @@ Custom Docker image for [Caddy](https://caddyserver.com/) with a curated set of 
 - [`github.com/fvbommel/caddy-combine-ip-ranges`](https://github.com/fvbommel/caddy-combine-ip-ranges)
 - [`github.com/WeidiDeng/caddy-cloudflare-ip`](https://github.com/WeidiDeng/caddy-cloudflare-ip)
 
+## Security dependency floors
+
+- `github.com/go-jose/go-jose/v3@v3.0.5`
+- `github.com/go-jose/go-jose/v4@v4.1.4`
+
 ## Supported platforms
 
 - `linux/amd64`
