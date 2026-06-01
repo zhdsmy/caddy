@@ -6,7 +6,9 @@ FROM caddy:${CADDY_VERSION}-builder-alpine AS builder
 
 ARG CADDY_VERSION=2.11.3
 
-RUN xcaddy build v${CADDY_VERSION} \
+RUN --mount=type=cache,target=/go/pkg/mod \
+    --mount=type=cache,target=/root/.cache/go-build \
+    xcaddy build v${CADDY_VERSION} \
     --output /usr/bin/caddy \
     --with github.com/caddy-dns/cloudflare \
     --with github.com/greenpau/caddy-security \

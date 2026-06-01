@@ -80,6 +80,8 @@ volumes:
 
 ## Build locally
 
+BuildKit cache mounts are used for Go module and build caches, so repeated local and CI builds can reuse downloaded modules and compiled packages.
+
 ```bash
 docker build \
   --build-arg CADDY_VERSION=2.11.3 \
