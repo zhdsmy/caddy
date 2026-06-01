@@ -15,7 +15,8 @@ RUN xcaddy build v${CADDY_VERSION} \
     --with github.com/fvbommel/caddy-combine-ip-ranges \
     --with github.com/WeidiDeng/caddy-cloudflare-ip \
     --with github.com/go-jose/go-jose/v3@v3.0.5 \
-    --with github.com/go-jose/go-jose/v4@v4.1.4
+    --with github.com/go-jose/go-jose/v4@v4.1.4 \
+    --with github.com/Azure/go-ntlmssp@v0.1.1
 
 FROM caddy:${CADDY_VERSION}-alpine
 
