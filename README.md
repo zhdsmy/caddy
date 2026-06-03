@@ -7,8 +7,9 @@ Custom Docker image for [Caddy](https://caddyserver.com/) with a curated set of 
 
 ## Included version
 
-- Caddy: `2.11.3`
-- Base image: `caddy:2.11.3-alpine`
+- Caddy: `2.11.4`
+- Builder image: `golang:1.26-alpine3.23`
+- Runtime image: `alpine:3.23`
 
 ## Included plugins
 
@@ -33,7 +34,7 @@ Custom Docker image for [Caddy](https://caddyserver.com/) with a curated set of 
 ## Tags
 
 - `latest`: latest build from the default branch
-- `2.11.3`: current Caddy version build
+- `2.11.4`: current Caddy version build
 - `2.11`: major/minor tag for versioned releases
 
 ## Quick start
@@ -84,16 +85,16 @@ BuildKit cache mounts are used for Go module and build caches, so repeated local
 
 ```bash
 docker build \
-  --build-arg CADDY_VERSION=2.11.3 \
+  --build-arg CADDY_VERSION=2.11.4 \
   -t domizhang/caddy:local .
 ```
 
 ## Update policy
 
-The Caddy version is pinned in `Dockerfile` and `.github/workflows/main.yml`. To update:
+The Caddy version is pinned in `VERSION` and `Dockerfile`. To update:
 
 1. Check the upstream [Caddy releases](https://github.com/caddyserver/caddy/releases).
-2. Update `CADDY_VERSION` / `DEFAULT_VERSION`.
+2. Update `VERSION` / `CADDY_VERSION`.
 3. Build and test the image.
 4. Tag the repository as `vX.Y.Z` to publish versioned tags.
 
