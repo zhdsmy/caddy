@@ -140,7 +140,7 @@ jobs:
           images: ${{ secrets.DOCKER_HUB_USERNAME }}/${{ env.IMAGE_NAME }}
           labels: |
             org.opencontainers.image.title=${{ env.IMAGE_NAME }}
-            org.opencontainers.image.description=Custom Caddy image with Cloudflare DNS, security, L4, cache, and IP utility plugins
+            org.opencontainers.image.description=Custom Caddy image with Cloudflare DNS, L4, cache, and IP utility plugins
           tags: |
             type=raw,value=latest,enable={{is_default_branch}}
             type=raw,value=${{ steps.version.outputs.version }},enable={{is_default_branch}}
@@ -179,5 +179,5 @@ jobs:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
           repository: ${{ secrets.DOCKER_HUB_USERNAME }}/${{ env.IMAGE_NAME }}
-          short-description: "Custom Caddy image with Cloudflare DNS, security, L4, cache, and IP utility plugins"
+          short-description: "Custom Caddy image with Cloudflare DNS, L4, cache, and IP utility plugins"
           readme-filepath: ./README.md

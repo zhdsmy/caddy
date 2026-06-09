@@ -1,6 +1,6 @@
 # Caddy
 
-Custom Docker image for [Caddy](https://caddyserver.com/) with a curated set of plugins for DNS automation, authentication, layer 4 proxying, caching, and IP range utilities.
+Custom Docker image for [Caddy](https://caddyserver.com/) with a curated set of plugins for DNS automation, layer 4 proxying, caching, and IP range utilities.
 
 [![Docker Pulls](https://img.shields.io/docker/pulls/domizhang/caddy.svg)](https://hub.docker.com/r/domizhang/caddy)
 [![Docker Image Size](https://img.shields.io/docker/image-size/domizhang/caddy/latest)](https://hub.docker.com/r/domizhang/caddy)
@@ -14,7 +14,6 @@ Custom Docker image for [Caddy](https://caddyserver.com/) with a curated set of 
 ## Included plugins
 
 - [`github.com/caddy-dns/cloudflare`](https://github.com/caddy-dns/cloudflare)
-- [`github.com/greenpau/caddy-security`](https://github.com/greenpau/caddy-security)
 - [`github.com/mholt/caddy-l4`](https://github.com/mholt/caddy-l4)
 - [`github.com/caddyserver/cache-handler`](https://github.com/caddyserver/cache-handler)
 - [`github.com/fvbommel/caddy-combine-ip-ranges`](https://github.com/fvbommel/caddy-combine-ip-ranges)

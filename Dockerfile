@@ -23,7 +23,6 @@ RUN --mount=type=cache,target=/go/pkg/mod \
     xcaddy build v${CADDY_VERSION} \
     --output /usr/bin/caddy \
     --with github.com/caddy-dns/cloudflare \
-    --with github.com/greenpau/caddy-security \
     --with github.com/mholt/caddy-l4 \
     --with github.com/caddyserver/cache-handler \
     --with github.com/fvbommel/caddy-combine-ip-ranges \
@@ -37,7 +36,7 @@ FROM alpine:${ALPINE_VERSION}
 ARG CADDY_VERSION
 
 LABEL org.opencontainers.image.title="caddy" \
-      org.opencontainers.image.description="Custom Caddy image with Cloudflare DNS, security, L4, cache, and IP utility plugins" \
+      org.opencontainers.image.description="Custom Caddy image with Cloudflare DNS, L4, cache, and IP utility plugins" \
       org.opencontainers.image.version="${CADDY_VERSION}" \
       org.opencontainers.image.source="https://github.com/zhdsmy/caddy" \
       org.opencontainers.image.licenses="Apache-2.0"
