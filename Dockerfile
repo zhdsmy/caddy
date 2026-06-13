@@ -42,7 +42,7 @@ LABEL org.opencontainers.image.title="caddy" \
       org.opencontainers.image.licenses="Apache-2.0"
 
 RUN set -eux; \
-    apk add --no-cache \
+    apk add --no-cache --upgrade \
         ca-certificates \
         curl \
         libcrypto3 \
