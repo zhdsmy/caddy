@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 
-ARG ALPINE_VERSION=3.23
+ARG ALPINE_VERSION=3.24
 ARG CADDY_VERSION=2.11.4
 ARG GO_VERSION=1.26
 ARG XCADDY_VERSION=v0.4.5
@@ -13,7 +13,7 @@ ARG XCADDY_VERSION
 RUN --mount=type=cache,target=/go/pkg/mod \
     --mount=type=cache,target=/root/.cache/go-build \
     set -eux; \
-    apk add --no-cache \
+    apk add --no-cache --upgrade \
         ca-certificates \
         git; \
     go install github.com/caddyserver/xcaddy/cmd/xcaddy@${XCADDY_VERSION}
@@ -42,10 +42,12 @@ LABEL org.opencontainers.image.title="caddy" \
       org.opencontainers.image.licenses="Apache-2.0"
 
 RUN set -eux; \
-    apk add --no-cache \
+    apk add --no-cache --upgrade \
         ca-certificates \
         curl \
+        libcrypto3 \
         libcap \
+        libssl3 \
         mailcap; \
     mkdir -p \
         /config/caddy \
