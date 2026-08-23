@@ -26,10 +26,12 @@ RUN --mount=type=cache,target=/go/pkg/mod \
     --with github.com/mholt/caddy-l4 \
     --with github.com/caddyserver/cache-handler \
     --with github.com/fvbommel/caddy-combine-ip-ranges \
-    --with github.com/WeidiDeng/caddy-cloudflare-ip \
-    --with github.com/go-jose/go-jose/v3@v3.0.5 \
-    --with github.com/go-jose/go-jose/v4@v4.1.4 \
-    --with github.com/Azure/go-ntlmssp@v0.1.1
+      --with github.com/WeidiDeng/caddy-cloudflare-ip \
+      --with github.com/go-jose/go-jose/v3@v3.0.5 \
+      --with github.com/go-jose/go-jose/v4@v4.1.4 \
+      --with github.com/Azure/go-ntlmssp@v0.1.1 \
+      --with golang.org/x/text@v0.39.0 \
+      --with google.golang.org/grpc@v1.82.1
 
 FROM alpine:${ALPINE_VERSION}
 

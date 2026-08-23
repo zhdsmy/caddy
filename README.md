@@ -24,6 +24,8 @@ Custom Docker image for [Caddy](https://caddyserver.com/) with a curated set of 
 - `github.com/go-jose/go-jose/v3@v3.0.5`
 - `github.com/go-jose/go-jose/v4@v4.1.4`
 - `github.com/Azure/go-ntlmssp@v0.1.1`
+- `golang.org/x/text@v0.39.0`
+- `google.golang.org/grpc@v1.82.1`
 
 ## Supported platforms
 
