@@ -7,7 +7,7 @@ Custom Docker image for [Caddy](https://caddyserver.com/) with a curated set of 
 
 ## Included version
 
-- Caddy: `2.11.4`
+- Caddy: `2.11.7`
 - Builder image: `golang:1.26-alpine3.23`
 - Runtime image: `alpine:3.23`
 
@@ -35,7 +35,7 @@ Custom Docker image for [Caddy](https://caddyserver.com/) with a curated set of 
 ## Tags
 
 - `latest`: latest build from the default branch
-- `2.11.4`: current Caddy version build
+- `2.11.7`: current Caddy version build
 - `2.11`: major/minor tag for versioned releases
 
 ## Quick start
@@ -86,7 +86,7 @@ BuildKit cache mounts are used for Go module and build caches, so repeated local
 
 ```bash
 docker build \
-  --build-arg CADDY_VERSION=2.11.4 \
+  --build-arg CADDY_VERSION=2.11.7 \
   -t domizhang/caddy:local .
 ```
 
