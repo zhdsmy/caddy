@@ -30,7 +30,7 @@ RUN --mount=type=cache,target=/go/pkg/mod \
     --with github.com/go-jose/go-jose/v3@v3.0.5 \
     --with github.com/go-jose/go-jose/v4@v4.1.5 \
     --with github.com/Azure/go-ntlmssp@v0.1.1 \
-    --with golang.org/x/net@v0.60.0 \
+    --with golang.org/x/net/http2@v0.60.0 \
     --with golang.org/x/text@v0.42.0 \
     --with google.golang.org/grpc@v1.83.2
 
