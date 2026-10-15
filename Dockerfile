@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1
 
 ARG ALPINE_VERSION=3.24
-ARG CADDY_VERSION=2.11.4
+ARG CADDY_VERSION=2.11.7
 ARG GO_VERSION=1.26
 ARG XCADDY_VERSION=v0.4.5
 
@@ -28,10 +28,11 @@ RUN --mount=type=cache,target=/go/pkg/mod \
     --with github.com/fvbommel/caddy-combine-ip-ranges \
     --with github.com/WeidiDeng/caddy-cloudflare-ip \
     --with github.com/go-jose/go-jose/v3@v3.0.5 \
-    --with github.com/go-jose/go-jose/v4@v4.1.4 \
+    --with github.com/go-jose/go-jose/v4@v4.1.5 \
     --with github.com/Azure/go-ntlmssp@v0.1.1 \
-    --with golang.org/x/text@v0.39.0 \
-    --with google.golang.org/grpc@v1.82.1
+    --with golang.org/x/net/http2@v0.60.0 \
+    --with golang.org/x/text@v0.42.0 \
+    --with google.golang.org/grpc@v1.83.2
 
 FROM alpine:${ALPINE_VERSION}
 
