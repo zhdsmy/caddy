@@ -105,3 +105,9 @@ Plugin versions intentionally follow their module defaults during the Caddy buil
 ## License
 
 This repository only builds a Docker image. Caddy and included plugins are distributed under their respective upstream licenses.
+
+## CA security maintenance
+
+Runtime package layers are rebuilt against current repository metadata, even when
+the application version is unchanged. CI rejects the two CA roots revoked in
+October 2026 by DER SHA256 and fails on an empty or unreadable trust bundle.

@@ -15,6 +15,7 @@ RUN --mount=type=cache,target=/go/pkg/mod \
     set -eux; \
     apk add --no-cache --upgrade \
         ca-certificates \
+        ca-certificates-bundle \
         git; \
     go install github.com/caddyserver/xcaddy/cmd/xcaddy@${XCADDY_VERSION}
 
@@ -34,7 +35,7 @@ RUN --mount=type=cache,target=/go/pkg/mod \
     --with golang.org/x/text@v0.42.0 \
     --with google.golang.org/grpc@v1.83.2
 
-FROM alpine:${ALPINE_VERSION}
+FROM alpine:${ALPINE_VERSION} AS runtime
 
 ARG CADDY_VERSION
 
@@ -47,6 +48,7 @@ LABEL org.opencontainers.image.title="caddy" \
 RUN set -eux; \
     apk add --no-cache --upgrade \
         ca-certificates \
+        ca-certificates-bundle \
         curl \
         libcrypto3 \
         libcap \
