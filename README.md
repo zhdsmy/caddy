@@ -22,7 +22,7 @@ Custom Docker image for [Caddy](https://caddyserver.com/) with a curated set of 
 ## Security dependency floors
 
 - `github.com/go-jose/go-jose/v3@v3.0.5`
-- `github.com/go-jose/go-jose/v4@v4.1.5`
+- `github.com/go-jose/go-jose/v4@v4.1.6`
 - `github.com/Azure/go-ntlmssp@v0.1.1`
 - `golang.org/x/net@v0.60.0`
 - `golang.org/x/text@v0.42.0`

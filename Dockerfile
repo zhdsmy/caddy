@@ -29,7 +29,7 @@ RUN --mount=type=cache,target=/go/pkg/mod \
     --with github.com/fvbommel/caddy-combine-ip-ranges \
     --with github.com/WeidiDeng/caddy-cloudflare-ip \
     --with github.com/go-jose/go-jose/v3@v3.0.5 \
-    --with github.com/go-jose/go-jose/v4@v4.1.5 \
+    --with github.com/go-jose/go-jose/v4@v4.1.6 \
     --with github.com/Azure/go-ntlmssp@v0.1.1 \
     --with golang.org/x/net/http2@v0.60.0 \
     --with golang.org/x/text@v0.42.0 \
@@ -46,6 +46,7 @@ LABEL org.opencontainers.image.title="caddy" \
       org.opencontainers.image.licenses="Apache-2.0"
 
 RUN set -eux; \
+    apk upgrade --no-cache; \
     apk add --no-cache --upgrade \
         ca-certificates \
         ca-certificates-bundle \

@@ -74,29 +74,34 @@ jobs:
       - name: Verify effective CA trust
         run: python3 tests/check_ca.py "local/${IMAGE_NAME}:ci"
 
+      - name: Stage candidate in local registry
+        run: |
+          docker run -d --name scan-registry -p 127.0.0.1:5000:5000 registry:2.8.3
+          docker tag "local/${IMAGE_NAME}:ci" "localhost:5000/${IMAGE_NAME}:ci"
+          docker push "localhost:5000/${IMAGE_NAME}:ci"
+
       - name: Scan image vulnerabilities
-        uses: aquasecurity/trivy-action@v0.36.0
-        with:
-          image-ref: local/${{ env.IMAGE_NAME }}:ci
-          format: table
-          severity: HIGH,CRITICAL
-          ignore-unfixed: true
-          vuln-type: os,library
-          scanners: vuln
-          exit-code: "1"
+        run: |
+          docker run --rm --network host \
+            -v hermes-op-trivy-cache:/root/.cache/trivy \
+            -v "$PWD:/evidence" \
+            aquasec/trivy@sha256:790fd66d1697395d8693d1acaa1ea702406a20f109b6fc7bac8db623eca6c06c \
+            image --image-src remote --insecure --scanners vuln \
+            --severity HIGH,CRITICAL --ignore-unfixed --exit-code 1 \
+            --format json --output /evidence/trivy-results.json \
+            "localhost:5000/${IMAGE_NAME}:ci"
 
       - name: Generate Trivy SARIF
         if: always() && steps.smoke_build.outcome == 'success'
-        uses: aquasecurity/trivy-action@v0.36.0
-        with:
-          image-ref: local/${{ env.IMAGE_NAME }}:ci
-          format: sarif
-          output: trivy-results.sarif
-          severity: UNKNOWN,LOW,MEDIUM,HIGH,CRITICAL
-          ignore-unfixed: true
-          vuln-type: os,library
-          scanners: vuln
-          exit-code: "0"
+        run: |
+          docker run --rm --network host \
+            -v hermes-op-trivy-cache:/root/.cache/trivy \
+            -v "$PWD:/evidence" \
+            aquasec/trivy@sha256:790fd66d1697395d8693d1acaa1ea702406a20f109b6fc7bac8db623eca6c06c \
+            image --image-src remote --insecure --scanners vuln \
+            --severity HIGH,CRITICAL --ignore-unfixed \
+            --format sarif --output /evidence/trivy-results.sarif \
+            "localhost:5000/${IMAGE_NAME}:ci"
 
       - name: Upload Trivy SARIF
         if: always() && hashFiles('trivy-results.sarif') != '' && (github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository)
